@@ -18,6 +18,10 @@ async function run() {
 
     const path = core.getInput("subjects-path")
     const pathExpr = `${process.cwd()}/${path}/${tenant}/**/*.json`
+    
+    
+    console.log(environments);
+    console.log(s3env);
 
     if (!(env  in environments)) {
       core.setFailed(`Specified env ${env} is not a valid value. Please refer to the documentation for the valid environment values`);
