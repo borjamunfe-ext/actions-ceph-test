@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v2
        
       - name: Validate subjects
-        uses: './schema-validator-action'
+        uses: './schema-validator-action-bmf'
         with:
           subjects-path: data-extension
       - name: Publish Subjects
-        uses: './schema-publisher-action'
+        uses: './schema-publisher-action-bmf'
         with:
           local-access-key: ${{ secrets.CEPH_BMF_ACCESS_KEY }}
           local-secret-key: ${{ secrets.CEPH_BMF_SECRET_KEY }}
