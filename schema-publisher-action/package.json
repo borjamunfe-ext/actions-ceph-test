@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuelgmartinez/ghactions.git"
+    "url": "git+https://github.com/borjamunfe-ext/actions-ceph-test.git"
   },
   "author": "samuelgmartinez@gmail.com",
   "license": "ISC",
