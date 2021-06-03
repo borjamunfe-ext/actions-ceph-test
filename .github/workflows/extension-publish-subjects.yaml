@@ -1,0 +1,25 @@
+name: "deploy subjects"
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    env:
+      NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
+    runs-on: [ubuntu-latest, self-hosted, common]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout extensibility actions
+        uses: actions/checkout@v2
+       
+      - name: Validate subjects
+        uses: './schema-validator-action'
+        with:
+          subjects-path: data-extension
+      - name: Publish Subjects
+        uses: './schema-publisher-action'
+        with:
+          local-access-key: ${{ secrets.DES_LIBDATAX_ACCESSKEY }}
+          local-secret-key: ${{ secrets.DES_LIBDATAX_SECRETKEY }}
+          environment: local
+          subjects-path: data-extension

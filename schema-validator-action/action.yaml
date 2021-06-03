@@ -1,0 +1,17 @@
+name: 'APISubjectValidator'
+description: 'Validates the existing JSON Schemas in form and spec'
+inputs:
+  subjects-path:  # id of input
+    description: 'Repository root path where the subject json schemas are stored'
+    required: true
+    default: '.'
+outputs:
+  parsed-schemas: # id of output
+    description: 'Subject files processed by the action'
+  successful-schemas:
+    description: Subject files verified successfully
+  failed-schemas:
+    description: Subject files failed to be verified
+runs:
+  using: 'node12'
+  main: './dist/index.js'
