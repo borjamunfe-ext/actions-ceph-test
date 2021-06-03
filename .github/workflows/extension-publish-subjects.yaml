@@ -22,4 +22,5 @@ jobs:
           local-access-key: ${{ secrets.CEPH_BMF_ACCESS_KEY }}
           local-secret-key: ${{ secrets.CEPH_BMF_SECRET_KEY }}
           environment: local
+          tenant: za
           subjects-path: data-extension
