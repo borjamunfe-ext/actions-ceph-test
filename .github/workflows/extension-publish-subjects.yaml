@@ -19,7 +19,7 @@ jobs:
       - name: Publish Subjects
         uses: './schema-publisher-action'
         with:
-          local-access-key: ${{ secrets.CEPH_BMF.access-key }}
-          local-secret-key: ${{ secrets.CEPH_BMF.secret-key }}
+          local-access-key: ${{ secrets.CEPH_BMF_ACCESS_KEY }}
+          local-secret-key: ${{ secrets.CEPH_BMF_SECRET_KEY }}
           environment: local
           subjects-path: data-extension
