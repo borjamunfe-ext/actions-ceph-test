@@ -6,7 +6,7 @@ jobs:
   build:
     env:
       NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
-    runs-on: [self-hosted, common]
+    runs-on: [linux, self-hosted, common]
     steps:
       - uses: actions/checkout@v2
       - name: Checkout extensibility actions
