@@ -7,21 +7,6 @@ const environments = {
     baseUrl: "https://cephitx.s3.us-east-2.amazonaws.com",
     bucketName: "cephitx",
     basePath: "/"
-  },
-  "des": {
-    baseUrl: "http://localhost:4572",
-    bucketName: "demo-bucket",
-    basePath: "/des"
-  },
-  "pre": {
-    baseUrl: "http://localhost:4572",
-    bucketName: "demo-bucket",
-    basePath: "/pre"
-  },
-  "preint": {
-    baseUrl: "http://localhost:4572",
-    bucketName: "demo-bucket",
-    basePath: "/preint"
   }
 }
 
