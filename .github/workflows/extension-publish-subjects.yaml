@@ -16,6 +16,7 @@ jobs:
         uses: './schema-validator-action'
         with:
           subjects-path: data-extension
+          
       - name: Publish Subjects
         uses: './schema-publisher-action'
         with:
