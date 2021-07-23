@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$subject": "com.inditex.openplatform.domain.entity.v1",
+  "type": "object",
+  "properties": {
+    "field": {
+      "type": "wrongtype"
+    }
+  }
+}

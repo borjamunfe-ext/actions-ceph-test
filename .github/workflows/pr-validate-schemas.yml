@@ -5,12 +5,26 @@ name: PR-validate-schemas
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    paths: ['data-extension/**']
   pull_request:
     paths: ['data-extension/**']
+  workflow_dispatch:
+     inputs:
+      tenant:
+        description: Tenant
+        required: true
+      environment:
+        description: Environment
+        required: true
+      force:
+        description: Force deployment
+        required: false
+        default: "false"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contains two jobs called "validate" and publish
   validate:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -24,3 +38,18 @@ jobs:
         uses: './schema-validator-action'
         with:
           subjects-path: data-extension
+          
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{github.event_name == 'workflow_dispatch'}}
+    steps:
+        # Publish
+      - name: Publish subjects
+        uses: './schema-publisher-action'
+        with:
+          pre-access-key: ${{ secrets.PRE_LIBDATAX_ACCESSKEY }}
+          pre-secret-key: ${{ secrets.PRE_LIBDATAX_SECRETKEY }}
+          subjects-path: apis_test/extensibility
+          tenant: ${{ github.event.inputs.tenant }}
+          environment: ${{ github.event.inputs.environment }}
+          force: ${{ github.event.inputs.force }}
