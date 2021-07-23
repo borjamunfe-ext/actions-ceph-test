@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: PR-validate-schemas
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  pull_request:
+    paths: ['data-extension/**']
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 
+      - uses: actions/checkout@v2
+
+      # Validate schemas uploaded
+      - name: Validate subjects
+        uses: './schema-validator-action'
+        with:
+          subjects-path: data-extension
